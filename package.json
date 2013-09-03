@@ -1,0 +1,16 @@
+{
+  "name": "howdy",
+  "version": "0.0.0",
+  "private": true,
+  "bin": "./bin/howdy",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "0.8.4",
+    "express": "3.3.4",
+    "marked": "~0.2.9",
+    "rimraf": "~2.2.2",
+    "pygmentize-bundled": "~1.2.0"
+  }
+}
