@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+
+  background: #f5f1e9;
+  color: #0d4544;
+  font-family: 'Avenir';
+  font-size: 32px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: normal;
+}
+
+#slides {
+  padding: 0;
+  list-style-type: none;
+}
+
+.slide {
+  padding: 32px;
+}

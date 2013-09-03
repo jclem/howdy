@@ -19,6 +19,10 @@ console.log('Copying JavaScript...');
 fs.mkdirSync('.howdy/javascripts');
 copyDir('javascripts');
 
+console.log('Copying Styles...');
+fs.mkdirSync('.howdy/stylesheets');
+copyDir('stylesheets');
+
 console.log('Converting slides to HTML...');
 
 marked.setOptions({
