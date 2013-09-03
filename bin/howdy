@@ -15,6 +15,10 @@ if (fs.existsSync('.howdy')) {
 console.log('Creating ".howdy"...');
 fs.mkdirSync('.howdy');
 
+console.log('Copying JavaScript...');
+fs.mkdirSync('.howdy/javascripts');
+copyDir('javascripts');
+
 console.log('Converting slides to HTML...');
 
 marked.setOptions({
@@ -31,13 +35,22 @@ marked.setOptions({
 
 marked(fs.readFileSync('slides.md').toString(), {}, function (err, content) {
   var opts     = {},
-      template = fs.readFileSync(path.join(__dirname, '../template.ejs')).toString();
+      template = fs.readFileSync(path.join(__dirname, '../template.ejs')).toString(),
+      slides;
 
   if (err) throw err;
 
   if (fs.existsSync('howdy.json')) {
     opts = JSON.parse(fs.readFileSync('howdy.json').toString());
   }
+
+  slides = content.split('<hr>');
+
+  for (var i = 0; i < slides.length; i++) {
+    slides[i] = '<li class="slide" id="slide' + (i + 1) + '">' + slides[i] + '</li>';
+  }
+
+  content = slides.join('');
 
   fs.writeFileSync('.howdy/index.html', ejs.render(template, {
     slides: content,
@@ -67,4 +80,16 @@ function startServer () {
 
   app.listen(app.get('port'));
   console.log('Howdy listening on port ' + app.get('port'));
+}
+
+function copyDir (dir) {
+  var fileDir = path.join(__dirname, '../public/' + dir),
+      files = fs.readdirSync(fileDir);
+
+  files.forEach(function (file) {
+    if (!fs.existsSync(file)) {
+      var contents = fs.readFileSync(path.join(fileDir, file)).toString();
+      fs.writeFileSync('.howdy/' + dir + '/' + file, contents);
+    }
+  });
 }
