@@ -77,7 +77,7 @@ function startServer () {
 
   var app = express();
 
-  app.set('port', process.env.PORT || 9999);
+  app.set('port', 9999);
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.static('.howdy'));
