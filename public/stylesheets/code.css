@@ -1,3 +1,13 @@
+.highlight {
+  padding: 0.5em;
+  border: 2px solid rgba(13, 69, 68, 0.5);
+  border-radius: 4px;
+}
+
+.highlight pre {
+  margin: 0;
+}
+
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
