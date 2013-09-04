@@ -15,8 +15,9 @@ Create a 'slides.md' file, with slides separated by '---' (`<hr>`s when rendered
 ```bash
 $ echo '# Slide 1 \n --- \n # Slide 2' > slides.md
 $ howdy
-$ open http://localhost:9999
 ```
+
+Then open `http://localhost:9999` in your browser.
 
 ## Navigation
 
