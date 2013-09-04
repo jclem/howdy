@@ -2,7 +2,6 @@
 
 var express    = require('express'),
     HowdyMaker = require('./lib/howdyMaker'),
-    path       = require('path'),
     rimraf     = require('rimraf');
 
 
