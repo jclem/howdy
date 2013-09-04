@@ -30,7 +30,7 @@ function manageNavigation () {
     if (decrementKeys.indexOf(e.which) > -1 || (e.shiftKey && e.which == 32)) {
       if (getCurrentSlideNumber() === 1) return;
       decrementSlide();
-    } else if (incrementKeys.indexOf(e.which) > -1) {
+    } else if (incrementKeys.concat(32).indexOf(e.which) > -1) {
       if (getMaxSlideNumber() === getCurrentSlideNumber()) return;
       incrementSlide();
     }
