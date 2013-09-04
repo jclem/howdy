@@ -1,12 +1,13 @@
 {
   "name": "howdy",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "bin": "./howdy.js",
   "dependencies": {
     "ejs": "0.8.4",
     "express": "3.3.4",
     "marked": "~0.2.9",
     "rimraf": "~2.2.2",
-    "pygmentize-bundled": "~1.2.0"
+    "pygmentize-bundled": "~1.2.0",
+    "optimist": "~0.6.0"
   }
 }

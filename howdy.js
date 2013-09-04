@@ -1,33 +1,21 @@
 #!/usr/bin/env node
 
-var express    = require('express'),
-    HowdyMaker = require('./lib/howdyMaker'),
-    rimraf     = require('rimraf');
+var HowdyMaker = require('./lib/howdyMaker');
 
 
-var slidesFile = process.argv[2] || 'slides.md';
+var argv = require('optimist')
+  .usage('Usage: howdy {input_file} {output_dir OPTIONAL}')
+  .demand(1)
+  .argv;
 
 
-// Create a new Howdy presentation, and serve it
-// from an express app.
-var howdy = new HowdyMaker(slidesFile, function () {
-  var app = express();
-
-  app.set('port', 9999);
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.static(howdy.publicDir));
-
-  app.listen(app.get('port'));
-  console.log('Howdy listening on port ' + app.get('port'));
-});
+var slidesFile = argv._[0],
+    outputDir  = argv._[1] || 'howdy';
 
 
-// When interrupting this process, first remove
-// the existing howdy presentation directory.
-process.on('SIGINT', function () {
-  console.log('\nRemoving "' + howdy.publicDir + '"...');
-  rimraf.sync(howdy.publicDir);
-  console.log('Exiting.');
+// Create a new Howdy presentation, in the specified
+// directory.
+var howdy = new HowdyMaker(slidesFile, outputDir, function () {
+  console.log('Howdy presentation created in ' + outputDir);
   process.exit(0);
 });
