@@ -5,8 +5,12 @@ var express    = require('express'),
     path       = require('path'),
     rimraf     = require('rimraf');
 
+
 var slidesFile = process.argv[2] || 'slides.md';
 
+
+// Create a new Howdy presentation, and serve it
+// from an express app.
 var howdy = new HowdyMaker(slidesFile, function () {
   var app = express();
 
@@ -19,6 +23,9 @@ var howdy = new HowdyMaker(slidesFile, function () {
   console.log('Howdy listening on port ' + app.get('port'));
 });
 
+
+// When interrupting this process, first remove
+// the existing howdy presentation directory.
 process.on('SIGINT', function () {
   console.log('\nRemoving "' + howdy.publicDir + '"...');
   rimraf.sync(howdy.publicDir);
