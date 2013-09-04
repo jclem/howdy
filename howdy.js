@@ -39,7 +39,7 @@ marked.setOptions({
 
 marked(fs.readFileSync('slides.md').toString(), {}, function (err, content) {
   var opts     = {},
-      template = fs.readFileSync(path.join(__dirname, '../template.ejs')).toString(),
+      template = fs.readFileSync(path.join(__dirname, 'template.ejs')).toString(),
       slides;
 
   if (err) throw err;
@@ -87,7 +87,7 @@ function startServer () {
 }
 
 function copyDir (dir) {
-  var fileDir = path.join(__dirname, '../public/' + dir),
+  var fileDir = path.join(__dirname, 'public/' + dir),
       files = fs.readdirSync(fileDir);
 
   files.forEach(function (file) {
