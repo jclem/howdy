@@ -20,6 +20,6 @@ $ open http://localhost:9999
 
 ## Navigation
 
-Navigate back with `up`, `left`, `shift + space`, or `h`.
+Navigate back with `up`, `left`, `shift + space`, `k`, or `h`.
 
-Navigate forward with `down`, `right`, `space`, or `l`.
+Navigate forward with `down`, `right`, `space`, `j`, or `l`.
