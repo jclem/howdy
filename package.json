@@ -1,6 +1,6 @@
 {
   "name": "howdy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "bin": "./howdy.js",
   "dependencies": {
     "ejs": "0.8.4",
