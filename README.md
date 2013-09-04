@@ -17,3 +17,9 @@ $ echo '# Slide 1 \n --- \n # Slide 2' > slides.md
 $ howdy
 $ open http://localhost:9999
 ```
+
+## Navigation
+
+Navigate back with `up`, `left`, `shift + space`, or `h`.
+
+Navigate forward with `down`, `right`, `space`, or `l`.

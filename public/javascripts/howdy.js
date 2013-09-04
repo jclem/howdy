@@ -8,25 +8,29 @@ function manageNavigation () {
     setCurrentSlide("#slide1");
   }
 
+  var incrementKeys = [39, 40, 74, 76],
+      decrementKeys = [37, 38, 72, 75],
+      allKeys = incrementKeys.concat(decrementKeys);
+
   $(window).on('keydown', function (e) {
-    if ([32, 37, 38, 39, 40].indexOf(e.which) > -1) {
+    if (allKeys.concat(32).indexOf(e.which) > -1) {
       e.preventDefault();
     } else {
       return;
     }
 
-    if (e.shiftKey && [37, 38, 39, 40].indexOf(e.which) > -1) {
-      if ([37, 38].indexOf(e.which) > -1) {
+    if (e.shiftKey && allKeys.indexOf(e.which) > -1) {
+      if (decrementKeys.indexOf(e.which) > -1) {
         return setCurrentSlide('#slide' + 1);
       } else {
         return setCurrentSlide('#slide' + getMaxSlideNumber());
       }
     }
 
-    if ([37, 38].indexOf(e.which) > -1 || (e.shiftKey && e.which == 32)) {
+    if (decrementKeys.indexOf(e.which) > -1 || (e.shiftKey && e.which == 32)) {
       if (getCurrentSlideNumber() === 1) return;
       decrementSlide();
-    } else if ([32, 39, 40].indexOf(e.which) > -1) {
+    } else if (incrementKeys.indexOf(e.which) > -1) {
       if (getMaxSlideNumber() === getCurrentSlideNumber()) return;
       incrementSlide();
     }
