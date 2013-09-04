@@ -14,10 +14,10 @@ Create a 'slides.md' file, with slides separated by '---' (`<hr>`s when rendered
 
 ```bash
 $ echo '# Slide 1 \n --- \n # Slide 2' > slides.md
-$ howdy
+$ howdy slides.md | xargs open
 ```
 
-Then open `http://localhost:9999` in your browser.
+This will open `howdy/index.html` in your browser.
 
 ## Navigation
 
