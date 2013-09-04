@@ -4,27 +4,29 @@ var HowdyMaker = require('./lib/howdyMaker'),
     optimist   = require('optimist');
 
 
-optimist = optimist
-  .usage('Usage: howdy {input_file} {output_dir OPTIONAL} -vh')
+var argv = optimist
+  .usage('Usage: howdy {input_file} -o output_dir -vh')
+  .alias('o', 'output')
+  .describe('o', 'Directory to output to')
+  .default('o', '.')
   .boolean('v')
   .alias('v', 'verbose')
   .describe('v', 'Verbose logging')
   .boolean('h')
   .alias('h', 'help')
-  .describe('h', 'Display this usage message');
+  .describe('h', 'Display this usage message')
+  .demand(1)
+  .argv;
 
 
-if (optimist.argv.h) {
+if (argv.h) {
   optimist.showHelp();
   process.exit(0);
 }
 
 
-argv = optimist.demand(1).argv;
-
-
 var slidesFile = argv._[0],
-    outputDir  = argv._[1] || 'howdy',
+    outputDir  = argv.o || '.',
     verbose    = argv.v;
 
 
