@@ -1,15 +1,26 @@
 #!/usr/bin/env node
 
-var HowdyMaker = require('./lib/howdyMaker');
+var HowdyMaker = require('./lib/howdyMaker'),
+    optimist   = require('optimist');
 
 
-var argv = require('optimist')
-  .usage('Usage: howdy {input_file} {output_dir OPTIONAL} -v')
+var argv = optimist
+  .usage('Usage: howdy {input_file} {output_dir OPTIONAL} -vh')
   .boolean('v')
   .alias('v', 'verbose')
   .describe('v', 'Verbose logging')
-  .demand(1)
-  .argv;
+  .boolean('h')
+  .alias('h', 'help')
+  .describe('h', 'Display this usage message');
+
+
+if (argv.argv.h) {
+  optimist.showHelp();
+  process.exit(0);
+}
+
+
+argv = argv.demand(1).argv;
 
 
 var slidesFile = argv._[0],
