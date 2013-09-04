@@ -4,7 +4,7 @@ var HowdyMaker = require('./lib/howdyMaker'),
     optimist   = require('optimist');
 
 
-var argv = optimist
+optimist = optimist
   .usage('Usage: howdy {input_file} {output_dir OPTIONAL} -vh')
   .boolean('v')
   .alias('v', 'verbose')
@@ -14,13 +14,13 @@ var argv = optimist
   .describe('h', 'Display this usage message');
 
 
-if (argv.argv.h) {
+if (optimist.argv.h) {
   optimist.showHelp();
   process.exit(0);
 }
 
 
-argv = argv.demand(1).argv;
+argv = optimist.demand(1).argv;
 
 
 var slidesFile = argv._[0],
