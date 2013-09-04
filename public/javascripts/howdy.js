@@ -15,6 +15,14 @@ function manageNavigation () {
       return;
     }
 
+    if (e.shiftKey && [37, 38, 39, 40].indexOf(e.which) > -1) {
+      if ([37, 38].indexOf(e.which) > -1) {
+        return setCurrentSlide('#slide' + 1);
+      } else {
+        return setCurrentSlide('#slide' + getMaxSlideNumber());
+      }
+    }
+
     if ([37, 38].indexOf(e.which) > -1 || (e.shiftKey && e.which == 32)) {
       if (getCurrentSlideNumber() === 1) return;
       decrementSlide();
